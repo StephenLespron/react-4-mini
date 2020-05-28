@@ -7,16 +7,18 @@ class Post extends Component {
     super(props);
     this.state = {
       title: "",
-      content: ""
+      content: "",
     };
   }
   componentDidMount() {
     // This is where you would make an axios call to a server in a fullstack application
     // but for today we'll be just be filtering an array of dummy data
-    let post = posts.find(post => post.id === 2);
+    let post = posts.find(
+      (post) => post.id === parseInt(this.props.match.params.id)
+    );
     this.setState({
       title: post.title,
-      content: post.content
+      content: post.content,
     });
   }
   render() {
